@@ -7,7 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js']) 
 </head>
 <body class="bg-gray-100">
-
+    @include('partials.navbar')
     <main class="py-8">
         @yield('content') 
     </main>
