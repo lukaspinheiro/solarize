@@ -7,6 +7,10 @@ Route::get('/', function () {
     return view('pages.home');
 })->name('home');
 
+Route::get('/contato', function () {
+    return view('pages.contato');
+})->name('contato');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
