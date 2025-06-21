@@ -11,6 +11,10 @@ Route::get('/contato', function () {
     return view('pages.contato');
 })->name('contato');
 
+Route::get('/sobre', function () {
+    return view('pages.sobre');
+})->name('sobre');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');

@@ -22,7 +22,7 @@
             class="text-white font-semibold hover:text-yellow-400 flex items-center gap-1 transition-transform duration-300 transform hover:scale-105">
             <x-icon name="phone" /> Contato
         </a>
-        <a href="#"
+        <a href="{{ route('sobre') }}"
             alt="Menu Sobre"
             class="text-white font-semibold hover:text-yellow-400 flex items-center gap-1 transition-transform duration-300 transform hover:scale-105">
             <x-icon name="question" /> Sobre
