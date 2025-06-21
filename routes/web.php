@@ -7,6 +7,10 @@ Route::get('/', function () {
     return view('pages.home');
 })->name('home');
 
+Route::get('/planos', function () {
+    return view('pages.planos');
+})->name('planos');
+
 Route::get('/contato', function () {
     return view('pages.contato');
 })->name('contato');
