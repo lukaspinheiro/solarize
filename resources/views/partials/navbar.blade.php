@@ -12,7 +12,7 @@
             class="text-white font-semibold hover:text-yellow-400 flex items-center gap-1 transition-transform duration-300 transform hover:scale-105">
             <x-icon name="home" /> Início
         </a>
-        <a href="#"
+        <a href="{{ route('planos') }}"
             alt="Menu Planos"
             class="text-white font-semibold hover:text-yellow-400 flex items-center gap-1 transition-transform duration-300 transform hover:scale-105">
             <x-icon name="dollar" /> Planos
