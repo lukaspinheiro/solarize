@@ -8,7 +8,14 @@ RUN apt-get update && apt-get install -y \
 # Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
+# Define o diretório de trabalho
 WORKDIR /var/www
+
+# Copia os arquivos da aplicação para dentro do container
+COPY . /var/www
+
+# Instala as dependências do Laravel
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 # Permissões
 RUN chown -R www-data:www-data /var/www
