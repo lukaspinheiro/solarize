@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel-app
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+    ports:
+      - "8000:8000"
+    command: php artisan serve --host=0.0.0.0 --port=8000
+    depends_on:
+      - mysql
+
+  node:
+    image: node:20
+    container_name: laravel-node
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+    command: sh -c "tail -f /dev/null" # Mantém o container vivo
+    depends_on:
+      - app
+
+  mysql:
+    image: mysql:8.0
+    container_name: laravel-mysql
+    environment:
+      MYSQL_DATABASE: DB_SOLAR
+      MYSQL_USER: solar
+      MYSQL_PASSWORD: solar-user-2025
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
