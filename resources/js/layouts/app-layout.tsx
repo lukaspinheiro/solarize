@@ -1,14 +1,21 @@
-import AppLayoutTemplate from '@/layouts/app/app-sidebar-layout';
-import { type BreadcrumbItem } from '@/types';
-import { type ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 interface AppLayoutProps {
-    children: ReactNode;
-    breadcrumbs?: BreadcrumbItem[];
+  children: ReactNode;
+  breadcrumbs?: any[];
 }
 
-export default ({ children, breadcrumbs, ...props }: AppLayoutProps) => (
-    <AppLayoutTemplate breadcrumbs={breadcrumbs} {...props}>
+export default function AppLayout({ children }: AppLayoutProps) {
+  return (
+    <div
+      className="relative bg-[url('/images/fundo-painel-solar.jpg')] bg-cover bg-center min-h-screen backdrop-blur-sm"
+      style={{ backgroundImage: "url('/images/fundo-painel-solar.jpg')" }}
+    >
+      <div className="absolute inset-0 bg-black/50"></div>
+
+      <div className="relative z-10">
         {children}
-    </AppLayoutTemplate>
-);
+      </div>
+    </div>
+  );
+}

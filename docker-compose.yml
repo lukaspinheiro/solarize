@@ -14,7 +14,8 @@ services:
     command: sh -c "composer install && php artisan serve --host=0.0.0.0 --port=8000"
     depends_on:
       - mysql
-
+    networks:
+      - app-network 
 
   node:
     image: node:20
@@ -22,9 +23,13 @@ services:
     working_dir: /var/www
     volumes:
       - .:/var/www
-    command: sh -c "tail -f /dev/null" # Mantém o container vivo
+    ports:
+      - "5173:5173"
+    command: sh -c "tail -f /dev/null"
     depends_on:
       - app
+    networks:
+      - app-network
 
   mysql:
     image: mysql:8.0
@@ -38,6 +43,12 @@ services:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
 
 volumes:
   mysql-data:
+
+networks:
+  app-network:
+    driver: bridge

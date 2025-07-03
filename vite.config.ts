@@ -10,6 +10,7 @@ export default defineConfig({
             input: ['resources/css/app.css', 'resources/js/app.tsx'],
             ssr: 'resources/js/ssr.tsx',
             refresh: true,
+            hotFile: 'storage/framework/vite.hot',
         }),
         react(),
         tailwindcss(),
@@ -21,5 +22,10 @@ export default defineConfig({
         alias: {
             'ziggy-js': resolve(__dirname, 'vendor/tightenco/ziggy'),
         },
+    },
+    server: {
+        host: '0.0.0.0',
+        port: 5173,
+        origin: 'http://localhost:5173',  // <== ADICIONE ESTA LINHA
     },
 });
